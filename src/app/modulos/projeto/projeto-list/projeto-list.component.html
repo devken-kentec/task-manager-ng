@@ -1,0 +1,40 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/menu">Início</a></li>
+    <li class="breadcrumb-item active">Listagem</li>
+  </ol>
+</nav>
+<div class="col-md-12 mt-3">
+  <button
+    class="btn btn-primary mt-3"
+    routerLink="/projeto/new">
+    Novo Projeto
+  </button>
+</div>
+<div class="col-md-12 mt-3">
+  <p-table [value]="projetos" [tableStyle]="{ 'min-width': '20rem', 'max-height': '10rem'}">
+    <ng-template pTemplate="header">
+        <tr>
+          <th>ID</th>
+          <th>Descrição</th>
+          <th>Status</th>
+          <th>Ações</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-projetos>
+        <tr>
+          <td>
+            {{ projetos.id }}
+          </td>
+          <td>
+            {{projetos.descricao}}
+          </td>
+          <td>{{ projetos.status }}</td>
+          <td>
+            <button (click)="editar(projetos)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+            <button (click)="pegarDados(projetos)" data-toggle="modal" data-target="#ModalExclusao" class="btn btn-outline-danger btn-sm"><i class="fas fa-user-slash"></i></button>
+          </td>
+        </tr>
+    </ng-template>
+</p-table>
+</div>

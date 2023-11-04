@@ -1,0 +1,13 @@
+div.pagina {
+  padding: 30px 20px;
+  background: white;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 1px 1px 5px black !important;
+  width: 21cm;
+  height: 29.7cm;
+}
+
+td, th {
+  padding-left: 10px;
+}

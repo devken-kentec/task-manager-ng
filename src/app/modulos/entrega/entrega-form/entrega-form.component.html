@@ -1,0 +1,95 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/menu">Início</a></li>
+    <li class="breadcrumb-item"><a routerLink="/entrega">Listagem</a></li>
+    <li class="breadcrumb-item active">Formulário</li>
+  </ol>
+</nav>
+<div class="alert alert-success" role="alert" *ngIf="msgPost">
+  Requisição realizada com Sucesso!
+</div>
+<div class="col-12 col-md-12">
+  <p-card header="Cadastro e Controle de Entregas">
+    <div class="row col-md-12">
+      <div class="col-md-12">
+        <form [formGroup]="entregaForm">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-2">
+              <label for="id">ID:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                formControlName="id"
+                readonly=""
+              />
+            </div>
+              <div class="form-group col-md-10">
+              <label for="urlGit">URLGIT:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="urlGit"
+                formControlName="urlGit"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-9">
+              <label for="observacao">Observação:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="observacao"
+                formControlName="observacao"
+                autocomplete="off"
+              />
+            </div>
+            <div class="form-group col-md-3">
+              <label for="status">Status:</label>
+              <select id="status" class="form-control" formControlName="status">
+                    <option value="">Escolha o Status</option>
+                    <option value="ATIVO">ATIVO</option>
+                    <option value="INATIVO">INATIVO</option>
+                    <option value="ANDAMENTO">ANDAMENTO</option>
+                    <option value="EM_ESPERA">EM ESPERA</option>
+                    <option value="PREPARACAO">PREPARACAO</option>
+                    <option value="FINALIZADO">FINALIZADO</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-4">
+              <label for="projeto">Projeto:</label>
+              <select id="projeto" class="form-control" formControlName="projetoId">
+                    <option value="">Escolha o Projeto</option>
+                    <option *ngFor="let p of projetos" [value]="p.id">{{ p.descricao }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="tarefa">Tarefa:</label>
+              <select id="tarefa" class="form-control" formControlName="tarefaId">
+                    <option value="">Escolha a Tarefa</option>
+                    <option *ngFor="let t of tarefas" [value]="t.id">{{ t.descricao }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <button
+              type="submit"
+              (click)="gravarEntrega()"
+              class="btn btn-success mt-3"
+              >
+              <i class="fas fa-save"></i> &nbsp;{{ nomeBotao }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+  <!-- <pre>
+    {{ entregaForm.value | json }}
+  </pre> -->
+</div>
+

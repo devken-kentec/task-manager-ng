@@ -1,0 +1,187 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/menu">Início</a></li>
+    <li class="breadcrumb-item"><a routerLink="/entrega">Listagem</a></li>
+    <li class="breadcrumb-item active">Formulário</li>
+  </ol>
+</nav>
+<div class="col-12 col-md-12">
+  <p-card header="Cadastro e Controle de Arquivos">
+    <div class="row col-md-12">
+      <div class="col-md-12">
+        <form [formGroup]="lancamentoForm">
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-1">
+              <label for="id">ID:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                formControlName="id"
+                readonly=""
+              />
+            </div>
+              <div class="form-group col-md-11">
+              <label for="urlGit">Entrega:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="urlGit"
+                formControlName="urlGit"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="form-row col-md-12">
+            <div class="form-group col-md-4">
+              <label for="projeto">Projeto:</label>
+              <select id="projeto" class="form-control" formControlName="projetoId">
+                    <option value="">Escolha o Projeto</option>
+                    <option *ngFor="let p of projetos" [value]="p.id">{{ p.descricao }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-3">
+              <label for="tarefa">Tarefa:</label>
+              <select id="tarefa" class="form-control" formControlName="tarefaId">
+                    <option value="">Escolha a Tarefa</option>
+                    <option *ngFor="let t of tarefas" [value]="t.id">{{ t.descricao }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-5">
+              <label for="hash">Hash:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="hash"
+                formControlName="hash"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="form-row col-md-12" *ngIf="!continuar">
+            <button
+            type="submit"
+            (click)="continuarLancamento()"
+            class="btn btn-secondary mt-3"
+            [disabled]="!lancamentoForm.valid"
+            >
+            Continuar
+            </button>
+          </div>
+          <div class="form-row col-md-12" *ngIf="continuar">
+            <div class="form-group col-md-3">
+              <label for="tarefa">Atividade:</label>
+              <select id="tarefa" class="form-control" formControlName="atividadeId">
+                    <option value="">Esc. a Atividade</option>
+                    <option *ngFor="let a of atividades" [value]="a.id">{{ a.descricao }}</option>
+              </select>
+            </div>
+            <div class="form-group col-md-9">
+              <label for="arquivoGit">Arquivo GIT:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="arquivoGit"
+                formControlName="arquivoGit"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+          <div class="form-row col-md-12" *ngIf="continuar">
+            <button
+              type="submit"
+              (click)="incluirArquivo()"
+              class="btn btn-primary mt-3"
+              >
+              <i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Incluir
+            </button>
+          </div>
+              <!-- Modal -->
+              <div class="modal fade" id="ModalExclusao" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                    <div class="col-md-12">
+                      <h5 class="modal-title" id="TituloModalCentralizado">
+                        Vamos lá!
+                      </h5>
+                    </div>
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="msgPost">
+                      Requisição realizada com Sucesso!
+                    </div>
+                    <div class="modal-body">
+                      <div class="row d-fex justify-content-center">
+                        <div>
+                          Antes de Salvar Inclua o n.° da OF!
+                        </div>
+                      </div>
+                      <div class="row d-fex justify-content-center mt-2">
+                      <div class="col-md-6">
+                        <label for="of">{{ labelSelectOf }}</label>
+                        <select id="ref" class="form-control" formControlName="ofId" *ngIf="!mostraNumeroOf">
+                              <option value="">Escolha o mês</option>
+                              <option *ngFor="let ofl of ofs" [value]="ofl.id">{{ ofl.referencia }}</option>
+                        </select>
+                        <select id="of" class="form-control" formControlName="ofId" *ngIf="mostraNumeroOf">
+                          <option value="">Escolha a OF</option>
+                          <option *ngFor="let ofl of ofs" [value]="ofl.id">{{ ofl.numero }}</option>
+                        </select>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger"  data-dismiss="modal">
+                        <i class="fas fa-window-close"></i>&nbsp;Fechar
+                      </button>
+                      <button class="btn btn-success" (click)="gravarLancamento()">
+                        <i class="fas fa-save"></i> &nbsp;Enviar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--Fim da modal-->
+        </form>
+      </div>
+    </div>
+    <div class="row col-md-12" *ngIf="incluirLancamento.length">
+      <div class="col-md-12 mt-3">
+        <p-table [value]="incluirLancamento" [tableStyle]="{ 'min-width': '20rem', 'max-height': '10rem'}">
+          <ng-template pTemplate="header">
+              <tr style="font-size: 10pt;">
+                <th>Arquivo</th>
+                <th>Hash</th>
+                <th>Ações</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-incluirLancamento let-rowIndex="rowIndex">
+              <tr style="font-size: 10pt;">
+                <td>
+                  {{ incluirLancamento.arquivoGit }}
+                </td>
+                <td>
+                  {{ incluirLancamento.hash }}
+                </td>
+                <td>
+                  <button (click)="excluir(rowIndex)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+                </td>
+              </tr>
+          </ng-template>
+      </p-table>
+      </div>
+      <button
+      type="button"
+      class="btn btn-success mt-3 ml-3"
+      data-toggle="modal" data-target="#ModalExclusao"
+      >
+      <i class="fas fa-save"></i> &nbsp;Gravar
+    </button>
+    </div>
+  </p-card>
+  <!-- <pre>
+    {{ lancamentoForm.value | json }}
+  </pre> -->
+</div>
+
+

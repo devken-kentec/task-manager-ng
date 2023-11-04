@@ -1,0 +1,68 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/menu">Início</a></li>
+    <li class="breadcrumb-item active">Listagem</li>
+  </ol>
+</nav>
+<div class="col-md-12 mt-3 d-flex justify-content-around">
+  <button
+    class="btn btn-primary mt-3"
+    routerLink="/entrega/new">
+    Nova Entrega
+  </button>
+  <button
+  class="btn btn-secondary mt-3" (click)="habilitarEdicao()">
+  Modo Edição
+</button>
+  <button
+  class="btn btn-warning mt-3"
+  routerLink="/menu">
+  Sair
+</button>
+</div>
+<div class="pagina mt-3">
+  <div class="cabacalho" style="text-align: center;">
+    Relatório de Entregas
+  </div>
+  <div class="corpo mt-3">
+    <table style="font-size: 7pt !important;">
+      <thead>
+        <tr>
+          <th>ID/Data</th>
+          <th>URL GIT/OBS.</th>
+          <th>Projeto/Tarefa</th>
+          <th>Status</th>
+          <th *ngIf="editarEntrega">Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ent of entregas">
+          <td>
+              <span>{{ent.id}}</span><br>
+              <span>{{ent.data}}</span>
+          </td>
+          <td>
+            <span>
+              <a [href]="ent.urlGit" target="_blank" rel="link git">{{ ent.urlGit }}</a>
+            </span><br>
+            <span>
+              {{ent.observacao }}
+            </span>
+          </td>
+          <td>
+            <span>{{ ent.projetoDescricao }}</span><br>
+            <span>{{ ent.tarefaDescricao }}</span>
+          </td>
+          <td>
+            {{ ent.status }}
+          </td>
+          <td *ngIf="editarEntrega">
+            <button (click)="editar(ent)" class="btn btn-outline-info btn-sm"><i class="far fa-edit"></i></button>
+            <button (click)="lancar(ent)" class="btn btn-outline-success btn-sm"><i class="far fa-edit"></i></button>
+          </td>
+        </tr>
+        <hr/>
+      </tbody>
+    </table>
+  </div>
+</div>
