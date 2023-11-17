@@ -8,12 +8,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { TableModule } from 'primeng/table';
 import { LancamentoListComponent } from './lancamento-list/lancamento-list.component';
+import { LancamentoListEntregaComponent } from './lancamento-list-entrega/lancamento-list-entrega.component';
 
 
 @NgModule({
   declarations: [
     LancamentoFormComponent,
-    LancamentoListComponent
+    LancamentoListComponent,
+    LancamentoListEntregaComponent
   ],
   imports: [
     CommonModule,

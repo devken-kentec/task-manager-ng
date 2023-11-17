@@ -1,0 +1,175 @@
+<nav>
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a routerLink="/menu">Início</a></li>
+    <li class="breadcrumb-item active">Listagem</li>
+  </ol>
+</nav>
+<div class="col-md-12 mt-3 d-flex justify-content-around">
+  <button
+    class="btn btn-primary mt-3"
+    routerLink="/entrega/new">
+    Nova Entrega
+  </button>
+  <button
+  class="btn btn-secondary mt-3">
+  Modo Edição
+</button>
+  <button
+  class="btn btn-warning mt-3"
+  routerLink="/menu">
+  Sair
+</button>
+</div>
+<div class="pagina mt-3">
+  <div class="cabacalho" style="text-align: center;">
+    Relatório de Entregas
+  </div>
+  <div class="corpo mt-3">
+    <table style="font-size: 9pt !important;">
+      <thead>
+        <tr>
+          <th>Tarefa</th>
+          <th>Lançamentos para Laudo Banco do Brasil</th>
+          <th>Editar</th>
+        </tr>
+      </thead>
+      <tbody>
+        <div>Criação HTML - 5.10.1</div>
+        <tr *ngFor="let ent of listaEntregas5101">
+          <td style="width: 4px">
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <div>Alteração HTML - 5.10.2</div>
+        <tr *ngFor="let ent of listaEntregas5102">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <hr>
+        <div>Criação CSS - 5.10.3</div>
+        <tr *ngFor="let ent of listaEntregas5103">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <div>Alteração CSS - 5.10.4</div>
+        <tr *ngFor="let ent of listaEntregas5104">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <hr>
+        <div>Criação JS - 5.10.5</div>
+        <tr *ngFor="let ent of listaEntregas5105">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <div>Alteração JS - 5.10.6</div>
+        <tr *ngFor="let ent of listaEntregas5106">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <hr>
+        <div>Criação XML/JSON - 5.10.7</div>
+        <tr *ngFor="let ent of listaEntregas5107">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <div>Alteração XML/JSON - 5.10.8</div>
+        <tr *ngFor="let ent of listaEntregas5108">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <hr>
+        <div>Criação Java - 5.10.9</div>
+        <tr *ngFor="let ent of listaEntregas5109">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <div>Alteração Java - 5.10.10</div>
+        <tr *ngFor="let ent of listaEntregas51010">
+          <td>
+            {{ent.tarefa}}
+          </td>
+          <td>
+            {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
+          </td>
+          <td >
+            <a  type="button">Editar</a>&nbsp;
+            <a  type="button">Excluir</a>
+          </td>
+        </tr>
+        <hr/>
+      </tbody>
+    </table>
+  </div>
+</div>
