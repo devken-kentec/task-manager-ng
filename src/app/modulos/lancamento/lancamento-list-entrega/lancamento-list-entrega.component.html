@@ -11,7 +11,7 @@
     Nova Entrega
   </button>
   <button
-  class="btn btn-secondary mt-3">
+  class="btn btn-secondary mt-3" (click)="habilitarEdicao()">
   Modo Edição
 </button>
   <button
@@ -25,151 +25,164 @@
     Relatório de Entregas
   </div>
   <div class="corpo mt-3">
-    <table style="font-size: 9pt !important;">
+    <table style="font-size: 7pt !important;">
       <thead>
         <tr>
-          <th>Tarefa</th>
+          <th>Tarefa/Atividade/OBS.</th>
           <th>Lançamentos para Laudo Banco do Brasil</th>
-          <th>Editar</th>
+          <th *ngIf="edicao">Editar</th>
         </tr>
       </thead>
       <tbody>
         <div>Criação HTML - 5.10.1</div>
         <tr *ngFor="let ent of listaEntregas5101">
           <td style="width: 4px">
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5201 > 0">Total: {{tamanhoAtividade5201}} Pontuação: {{this.produto5201}}</div>
         <div>Alteração HTML - 5.10.2</div>
         <tr *ngFor="let ent of listaEntregas5102">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5202 > 0">Total: {{tamanhoAtividade5202}} Pontuação: {{this.produto5202}}</div>
         <hr>
         <div>Criação CSS - 5.10.3</div>
         <tr *ngFor="let ent of listaEntregas5103">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5203 > 0">Total: {{tamanhoAtividade5203}} Pontuação: {{this.produto5203}}</div>
         <div>Alteração CSS - 5.10.4</div>
         <tr *ngFor="let ent of listaEntregas5104">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5204 > 0">Total: {{tamanhoAtividade5204}} Pontuação: {{this.produto5204}}</div>
         <hr>
         <div>Criação JS - 5.10.5</div>
         <tr *ngFor="let ent of listaEntregas5105">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5205 > 0">Total: {{tamanhoAtividade5205}} Pontuação: {{this.produto5205}}</div>
         <div>Alteração JS - 5.10.6</div>
         <tr *ngFor="let ent of listaEntregas5106">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5206 > 0">Total: {{tamanhoAtividade5206}} Pontuação: {{this.produto5206}}</div>
         <hr>
         <div>Criação XML/JSON - 5.10.7</div>
         <tr *ngFor="let ent of listaEntregas5107">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5207 > 0">Total: {{tamanhoAtividade5207}} Pontuação: {{this.produto5207}}</div>
         <div>Alteração XML/JSON - 5.10.8</div>
         <tr *ngFor="let ent of listaEntregas5108">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5208 > 0">Total: {{tamanhoAtividade5208}} Pontuação: {{this.produto5208}}</div>
         <hr>
         <div>Criação Java - 5.10.9</div>
         <tr *ngFor="let ent of listaEntregas5109">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
+          <td *ngIf="edicao">
             <a  type="button">Editar</a>&nbsp;
             <a  type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade5209 > 0">Total: {{tamanhoAtividade5209}} Pontuação: {{this.produto5209}}</div>
         <div>Alteração Java - 5.10.10</div>
         <tr *ngFor="let ent of listaEntregas51010">
           <td>
-            {{ent.tarefa}}
+             {{ent.tarefa}}/{{ent.codigo}}/{{ent.obs}}
           </td>
           <td>
             {{ent.descricao}}/{{ent.arquivoGit}}#{{ent.hash}}
           </td>
-          <td >
-            <a  type="button">Editar</a>&nbsp;
-            <a  type="button">Excluir</a>
+          <td *ngIf="edicao">
+            <a type="button">Editar</a>&nbsp;
+            <a type="button">Excluir</a>
           </td>
         </tr>
+        <div style="font-weight: bold;" *ngIf="tamanhoAtividade52010 > 0">Total: {{tamanhoAtividade52010}} Pontuação: {{this.produto52010}}</div>
+        <br>
+        <div style="font-weight: bold;">Pontuação Total: {{ this.pontuacaoTotal }}</div>
         <hr/>
       </tbody>
     </table>
   </div>
+  <hr>
 </div>

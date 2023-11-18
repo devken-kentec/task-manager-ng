@@ -6,4 +6,5 @@ export interface LancamentoEntrega {
   status: string;
   tarefa: string;
   valor: number;
+  obs: string;
 }
