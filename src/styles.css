@@ -1,4 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+
+@page {
+  size: a4;
+}
+
+body {
+  font-family: inherit;
+  zoom: 0.8;
+}
 
 div.btn-menu {
   padding: 10px;
